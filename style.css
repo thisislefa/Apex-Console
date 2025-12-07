@@ -1,0 +1,342 @@
+ :root {
+            --color-primary: #0f172a;
+            --color-secondary: #7d7d7d;
+            --color-accent: #f97316;
+            --color-bg-light: #fff;
+        }
+
+        /* Targetting html and body with specific classes/attributes for better scoping */
+        html.hprn-html { line-height: 1.6; -webkit-text-size-adjust: 100%; }
+        body.hprn-pricing-body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-light);
+            color: #1f2937;
+        }
+        .hprn-pricing-body h1, .hprn-pricing-body h2, .hprn-pricing-body h3, .hprn-pricing-body h4, .hprn-pricing-body p, .hprn-pricing-body ul { margin: 0; padding: 0; }
+        .hprn-pricing-body ul { list-style: none; }
+
+        .hprn-pricing-body, .hprn-estimate-bar, .hprn-pricing-btn-secondary,
+        .hprn-pricing-feature-card, .hprn-pricing-sidebar-box,
+        .hprn-service-list-item input[type="checkbox"], .hprn-calc-input,
+        .hprn-calc-select { border-radius: 1px !important; }
+
+        .hprn-pricing-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 640px) {
+            .hprn-pricing-container { padding: 0 1.5rem; }
+        }
+
+        .hprn-pricing-hero {
+            background-color: var(--color-primary);
+            color: #ffffff;
+            padding: 3rem 0;
+        }
+
+        .hprn-pricing-hero-text h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .hprn-pricing-hero-text p {
+            margin-top: 0.75rem;
+            font-size: 1rem;
+            color: #cbd5e1;
+        }
+
+        .hprn-estimate-bar {
+            background-color: #1e293b;
+            padding: 1.5rem;
+            color: #ffffff;
+            margin-top: 2rem;
+            border-left: 4px solid var(--color-accent);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .hprn-estimate-bar {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .hprn-estimate-bar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .hprn-estimate-bar-group {
+                flex-direction: row;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        .hprn-estimate-bar-item h3 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #94a3b8;
+        }
+
+        /* Renamed total-amount classes to be hprn-specific */
+        .hprn-estimate-bar .hprn-total-amount {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .hprn-estimate-bar .hprn-total-amount-secondary {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .hprn-pricing-btn-secondary {
+            background-color: #334155;
+            border: 1px solid #475569;
+            color: #fff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-size: 0.9375rem;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.2s;
+        }
+
+        .hprn-pricing-btn-secondary:hover { background-color: #475569; }
+
+        /* Renamed badge classes to be hprn-specific */
+        .hprn-capex-opex-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+        }
+
+        .hprn-capex-badge {
+            background-color: #dbeafe;
+            color: #0c4a6e;
+        }
+
+        .hprn-opex-badge {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .hprn-pricing-main-wrapper > .hprn-pricing-container {
+            padding-top: 3rem;
+            padding-bottom: 6rem;
+        }
+
+        .hprn-console-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .hprn-pricing-sidebar { width: 100%; }
+        .hprn-pricing-sidebar-box {
+            background-color: #f9fafb;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .hprn-pricing-sidebar-box h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .hprn-service-list h4 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-top: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            text-transform: uppercase;
+        }
+
+        .hprn-service-list-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0.25rem;
+            cursor: pointer;
+        }
+
+        
+
+        .hprn-service-list-item input[type="checkbox"] {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.75rem;
+            cursor: pointer;
+            accent-color: var(--color-accent);
+        }
+
+        .hprn-service-list-item label {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #374151;
+            flex-grow: 1;
+            cursor: pointer;
+        }
+
+        .hprn-pricing-main-content { width: 100%; }
+
+        .config-group-title {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #c4c4c4;
+            padding-bottom: 0.75rem;
+        }
+
+        /* Renamed service-block to hprn-service-block */
+        .hprn-pricing-feature-card {
+            border: 1px solid #e2e8f0;
+            padding: 2rem;
+            background-color: #f9fafb;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+        .hprn-service-block {
+            border: 1px solid #e2e8f0;
+            padding: 2rem;
+            background-color: #f9fafb;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .hprn-pricing-feature-card:hover, .hprn-service-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hprn-pricing-feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Renamed card-description to hprn-card-description */
+        .hprn-card-description {
+            color: #64748b;
+            font-size: 0.9375rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 1rem;
+        }
+
+        .hprn-calc-input-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hprn-calc-input.duration-value {
+            flex-grow: 1;
+        }
+
+        .hprn-calc-select.duration-unit {
+            width: 100%;
+            max-width: 120px;
+        }
+
+        .hprn-calc-input-group { margin-bottom: 1.5rem; }
+
+        .hprn-calc-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .hprn-calc-price {
+            font-weight: 500;
+            color: var(--color-accent);
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        /* Renamed calc-input-trigger to hprn-calc-input-trigger */
+        .hprn-calc-input, .hprn-calc-select, .hprn-calc-input-trigger {
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            background-color: #ffffff;
+            color: #1f2937;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.2s;
+        }
+
+        .hprn-calc-input:focus, .hprn-calc-select:focus, .hprn-calc-input-trigger:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.5);
+        }
+
+        @media (min-width: 1024px) {
+            .hprn-console-flex {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .hprn-pricing-main-content { width: 66.666667%; }
+            .hprn-pricing-sidebar { width: 33.333333%; }
+        }
+
+        @media (max-width: 768px) {
+            .hprn-pricing-hero-text h1 { font-size: 1.75rem; }
+            .hprn-pricing-feature-card, .hprn-service-block { padding: 1.5rem; }
+            .hprn-calc-input-row { flex-direction: column; }
+            .hprn-calc-select.duration-unit { max-width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .hprn-pricing-container { padding: 0 0.75rem; }
+            .hprn-pricing-hero { padding: 2rem 0; }
+            .hprn-pricing-hero-text h1 { font-size: 1.5rem; }
+            .config-group-title { font-size: 1.25rem; }
+        }
+
+        .hprn-pricing-footer {
+            background-color: #e2e8f0;
+            padding: 2rem 0;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+
+        .hprn-pricing-footer h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }

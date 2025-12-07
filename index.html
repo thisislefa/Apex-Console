@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head class: "hprn-head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class: "hprn-title">Enterprise Service Cost Estimator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="hprn-pricing-body">
+
+    <header class="hprn-pricing-hero">
+        <div class="hprn-pricing-container">
+            <div class="hprn-pricing-hero-text">
+                <h1>Enterprise Service Configuration Console</h1>
+                <p>Tailor your service solution across Software, Infrastructure, and Marketing. Estimate costs based on scope, duration, and commitment level.</p>
+            </div>
+
+            <div class="hprn-estimate-bar">
+                <div class="hprn-estimate-bar-group">
+                    <div class="hprn-estimate-bar-item">
+                        <h3>Estimated Annualized OpEx (10% Discount)</h3>
+                        <span class="hprn-total-amount-secondary" id="total-annualized-display">R 0.00</span>
+                    </div>
+                    <div class="hprn-estimate-bar-item">
+                        <h3>Estimated Monthly OpEx</h3>
+                        <span class="hprn-total-amount" id="total-monthly-display">R 0.00</span>
+                    </div>
+                    <div class="hprn-estimate-bar-item">
+                        <h3>Estimated Once-Off CapEx</h3>
+                        <span class="hprn-total-amount-secondary" id="total-once-off-display">R 0.00</span>
+                    </div>
+                </div>
+                <button type="reset" form="calc-form" class="hprn-pricing-btn-secondary">Clear All Configurations</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="hprn-pricing-main-wrapper">
+        <div class="hprn-pricing-container">
+            <div class="hprn-console-flex">
+
+                <aside class="hprn-pricing-sidebar">
+                    <div class="hprn-pricing-sidebar-box">
+                        <h3>Service Scope Selector</h3>
+                        <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #64748b;">Check services to reveal configuration options.</p>
+
+                        <div class="hprn-service-list">
+                            <h4>Software Development</h4>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-web-dev" data-target="config-web-dev">
+                                <label for="check-web-dev">Bespoke Web Development <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></label>
+                            </div>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-mobile-dev" data-target="config-mobile-dev">
+                                <label for="check-mobile-dev">Mobile Development <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></label>
+                            </div>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-dev-maintenance" data-target="config-dev-maintenance">
+                                <label for="check-dev-maintenance">Dev Maintenance <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></label>
+                            </div>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-api-services" data-target="config-api-services">
+                                <label for="check-api-services">API & Backend <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></label>
+                            </div>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-ecommerce" data-target="config-ecommerce">
+                                <label for="check-ecommerce">E-commerce <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></label>
+                            </div>
+
+                            <h4>Managed IT Infrastructure</h4>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-cloud-compute" data-target="config-cloud-compute">
+                                <label for="check-cloud-compute">Cloud Computing <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></label>
+                            </div>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-it-support" data-target="config-it-support">
+                                <label for="check-it-support">IT Support <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></label>
+                            </div>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-datacenter" data-target="config-datacenter">
+                                <label for="check-datacenter">Data Center <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></label>
+                            </div>
+
+                            <h4>Marketing & Creative</h4>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-marketing-campaigns" data-target="config-marketing-campaigns">
+                                <label for="check-marketing-campaigns">Marketing Campaigns <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></label>
+                            </div>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-design-services" data-target="config-design-services">
+                                <label for="check-design-services">Design Services <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span><span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></label>
+                            </div>
+
+                            <h4>Hardware & Equipment</h4>
+                            <div class="hprn-service-list-item">
+                                <input type="checkbox" id="check-hardware" data-target="config-hardware">
+                                <label for="check-hardware">Hardware Procurement <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hprn-pricing-sidebar-box">
+                        <h3>Cost Information</h3>
+                        <p style="font-size: 0.875rem; color: #64748b;">All prices are estimated in South African Rands (ZAR). OpEx(Operational Expenditure) represents monthly recurring costs. Annual OpEx commitment includes a 10% Volume Discount. CapEx (Capital Expenditure) represents one-time upfront costs for purchasing assets that will benefit your business for years (you own assets). Conversions are based on standard 8-hour days and 4-week months.</p>
+                    </div>
+                </aside>
+
+                <form class="hprn-pricing-main-content" id="calc-form">
+                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #111827;">Service Configuration</h2>
+                    <p style="color: #4b5563; margin-bottom: 2rem; font-size: 0.9375rem;">Configure your enterprise services and view real-time cost estimates.</p>
+
+                    <div class="config-group-title">Software Development</div>
+
+                    <div class="hprn-service-block" id="config-web-dev" style="display:none;">
+                        <h3>Web Development <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></h3>
+                        <p class="hprn-card-description">Custom web development with flexible packages and add-on options.</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Select Package</span></label>
+                            <select name="web-dev-package" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00)</option>
+                                <option value="18000">Single Page Application (R 18,000.00)</option>
+                                <option value="40000">Multi-Page Business Site (R 40,000.00)</option>
+                                <option value="65000">Enterprise Web Application (R 65,000.00)</option>
+                                <option value="70000">Complex SaaS Platform (R 70,000.00)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="web-dev-pages" class="hprn-calc-label">
+                                <span>Additional Pages</span>
+                                <span class="hprn-calc-price">R 2,500.00 /page</span>
+                            </label>
+                            <input type="number" name="web-dev-pages" class="hprn-calc-input hprn-calc-input-trigger" min="0" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="web-dev-maint-months" class="hprn-calc-label">
+                                <span>Maintenance (Months)</span>
+                                <span class="hprn-calc-price">R 3,000.00 /month</span>
+                            </label>
+                            <input type="number" name="web-dev-maint-months" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="12" value="0" step="1">
+                        </div>
+                    </div>
+
+                    <div class="hprn-service-block" id="config-mobile-dev" style="display:none;">
+                        <h3>Mobile Development <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></h3>
+                        <p class="hprn-card-description">Native iOS and Android applications with complexity scaling.</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Platform Type</span></label>
+                            <select name="mobile-dev-platform" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00)</option>
+                                <option value="25000">iOS Only (R 25,000.00)</option>
+                                <option value="29000">Android Only (R 29,000.00)</option>
+                                <option value="35000">Cross-Platform (R 35,000.00)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Complexity Multiplier</span></label>
+                            <select name="mobile-dev-complexity" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="1.0">Standard (1x)</option>
+                                <option value="1.5">Moderate (1.5x)</option>
+                                <option value="2.0">High (2x)</option>
+                                <option value="2.5">Very Complex (2.5x)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="mobile-dev-maint-months" class="hprn-calc-label">
+                                <span>Maintenance (Months)</span>
+                                <span class="hprn-calc-price">R 4,000.00 /month</span>
+                            </label>
+                            <input type="number" name="mobile-dev-maint-months" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="12" value="0" step="1">
+                        </div>
+                    </div>
+
+                    <div class="hprn-service-block" id="config-dev-maintenance" style="display:none;">
+                        <h3>Development Maintenance <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></h3>
+                        <p class="hprn-card-description">Ongoing support, bug fixes, and application updates.</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Maintenance Tier</span></label>
+                            <select name="dev-maint-tier" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00/mo)</option>
+                                <option value="8000">Basic Monitoring (R 8,000.00/mo)</option>
+                                <option value="15000">Standard Support (R 15,000.00/mo)</option>
+                                <option value="25000">Premium Support (R 25,000.00/mo)</option>
+                                <option value="40000">24/7 Managed (R 40,000.00/mo)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="dev-maint-months" class="hprn-calc-label"><span>Duration (Months)</span></label>
+                            <input type="number" name="dev-maint-months" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="36" value="0" step="1">
+                        </div>
+                    </div>
+
+                    <div class="hprn-service-block" id="config-api-services" style="display:none;">
+                        <h3>API & Backend Services <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></h3>
+                        <p class="hprn-card-description">RESTful APIs, microservices, and robust backend infrastructure.</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Service Scope</span></label>
+                            <select name="api-scope" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00)</option>
+                                <option value="60000">Simple REST API (R 60,000.00)</option>
+                                <option value="85000">Advanced Microservices (R 85,000.00)</option>
+                                <option value="100000">Enterprise Backend System (R 100,000.00)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="api-endpoints" class="hprn-calc-label">
+                                <span>Additional Endpoints</span>
+                                <span class="hprn-calc-price">R 3,500.00 /endpoint</span>
+                            </label>
+                            <input type="number" name="api-endpoints" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="50" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="api-databases" class="hprn-calc-label">
+                                <span>Database Modules</span>
+                                <span class="hprn-calc-price">R 8,000.00 /module</span>
+                            </label>
+                            <input type="number" name="api-databases" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="20" value="0" step="1">
+                        </div>
+                    </div>
+
+                    <div class="hprn-service-block" id="config-ecommerce" style="display:none;">
+                        <h3>E-commerce Solutions <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></h3>
+                        <p class="hprn-card-description">Full-featured online stores with payment integration and inventory management.</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Platform Type</span></label>
+                            <select name="ecom-platform" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00)</option>
+                                <option value="12000">Basic Store (R 12,000.00)</option>
+                                <option value="20000">Professional Store (R 20,000.00)</option>
+                                <option value="35000">Enterprise Marketplace (R 35,000.00)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="ecom-payment-gateways" class="hprn-calc-label">
+                                <span>Payment Gateway Integrations</span>
+                                <span class="hprn-calc-price">R 5,000.00 /gateway</span>
+                            </label>
+                            <input type="number" name="ecom-payment-gateways" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="10" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="ecom-hosting-months" class="hprn-calc-label">
+                                <span>Hosting & Support (Months)</span>
+                                <span class="hprn-calc-price">R 6,000.00 /month</span>
+                            </label>
+                            <input type="number" name="ecom-hosting-months" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="12" value="0" step="1">
+                        </div>
+                    </div>
+
+                    <div class="config-group-title">Managed IT Infrastructure</div>
+
+                    <div class="hprn-service-block" id="config-cloud-compute" style="display:none;">
+                        <h3>Cloud Computing <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></h3>
+                        <p class="hprn-card-description">Managed cloud infrastructure, VMs, and computing resources.</p>
+                        <div class="hprn-calc-input-group">
+                            <label for="cloud-vm-count" class="hprn-calc-label">
+                                <span>Virtual Machines/Containers</span>
+                                <span class="hprn-calc-price">R 2,200.00 /VM/mo</span>
+                            </label>
+                            <input type="number" name="cloud-vm-count" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="100" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="cloud-storage-tb" class="hprn-calc-label">
+                                <span>Storage (TB)</span>
+                                <span class="hprn-calc-price">R 1,500.00 /TB/mo</span>
+                            </label>
+                            <input type="number" name="cloud-storage-tb" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="500" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Commitment Plan</span></label>
+                            <select name="cloud-commitment" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="1">Monthly (No Discount)</option>
+                                <option value="0.9">Annual (10% Discount)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="hprn-service-block" id="config-it-support" style="display:none;">
+                        <h3>IT Support & Maintenance <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></h3>
+                        <p class="hprn-card-description">Remote support, helpdesk services, and IT staff augmentation.</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Support Tier</span></label>
+                            <select name="it-support-tier" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00/mo)</option>
+                                <option value="10000">Basic 8/5 Helpdesk (R 10,000.00/mo)</option>
+                                <option value="20000">Standard 24/7 Support (R 20,000.00/mo)</option>
+                                <option value="35000">Premium Managed Services (R 35,000.00/mo)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="it-support-users" class="hprn-calc-label">
+                                <span>Supported Users</span>
+                                <span class="hprn-calc-price">R 1,200.00 /user/mo</span>
+                            </label>
+                            <input type="number" name="it-support-users" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="500" value="0" step="5">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="it-support-remote-hours" class="hprn-calc-label">
+                                <span>Remote Support Sessions</span>
+                                <span class="hprn-calc-price">R 800.00 /hour (Monthly Cap)</span>
+                            </label>
+                            <input type="number" name="it-support-remote-hours" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="160" value="0" step="5">
+                        </div>
+                    </div>
+
+                    <div class="hprn-service-block" id="config-datacenter" style="display:none;">
+                        <h3>Data Center Services <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></h3>
+                        <p class="hprn-card-description">Colocation, server management, backup, and disaster recovery.</p>
+                        <div class="hprn-calc-input-group">
+                            <label for="dc-racks" class="hprn-calc-label">
+                                <span>Server Racks</span>
+                                <span class="hprn-calc-price">R 12,000.00 /rack/mo</span>
+                            </label>
+                            <input type="number" name="dc-racks" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="20" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="dc-backup-storage" class="hprn-calc-label">
+                                <span>Backup Storage (TB)</span>
+                                <span class="hprn-calc-price">R 2,000.00 /TB/mo</span>
+                            </label>
+                            <input type="number" name="dc-backup-storage" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="100" value="0" step="5">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="dc-monitoring-points" class="hprn-calc-label">
+                                <span>Monitoring & CCTV Points</span>
+                                <span class="hprn-calc-price">R 600.00 /point/mo</span>
+                            </label>
+                            <input type="number" name="dc-monitoring-points" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="100" value="0" step="5">
+                        </div>
+                    </div>
+
+                    <div class="config-group-title">Marketing & Creative Studio</div>
+
+                    <div class="hprn-service-block" id="config-marketing-campaigns" style="display:none;">
+                        <h3>Marketing Campaigns <span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></h3>
+                        <p class="hprn-card-description">Digital marketing strategy, execution, and management (excludes ad spend).</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>Campaign Management Tier</span></label>
+                            <select name="marketing-tier" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00/mo)</option>
+                                <option value="15000">Social Media Management (R 15,000.00/mo)</option>
+                                <option value="35000">Full Funnel Marketing (R 35,000.00/mo)</option>
+                                <option value="60000">Premium Strategy & Analytics (R 60,000.00/mo)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="marketing-duration-months" class="hprn-calc-label">
+                                <span>Campaign Duration (Months)</span>
+                            </label>
+                            <input type="number" name="marketing-duration-months" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="36" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="marketing-ad-accounts" class="hprn-calc-label">
+                                <span>Ad Accounts to Manage</span>
+                                <span class="hprn-calc-price">R 2,000.00 /account/mo</span>
+                            </label>
+                            <input type="number" name="marketing-ad-accounts" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="15" value="0" step="1">
+                        </div>
+                    </div>
+
+                    <div class="hprn-service-block" id="config-design-services" style="display:none;">
+                        <h3>Design Services <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span><span class="hprn-capex-opex-badge hprn-opex-badge">OpEx</span></h3>
+                        <p class="hprn-card-description">Graphic design, branding, content creation, and multimedia production.</p>
+                        <div class="hprn-calc-input-group">
+                            <label class="hprn-calc-label"><span>One-Time Design Package</span></label>
+                            <select name="design-capex-package" class="hprn-calc-select hprn-calc-input-trigger">
+                                <option value="0">None (R 0.00)</option>
+                                <option value="25000">Logo & Brand Guide (R 25,000.00)</option>
+                                <option value="60000">Complete Brand Identity (R 60,000.00)</option>
+                                <option value="120000">Full Design System (R 120,000.00)</option>
+                            </select>
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="design-opex-hours" class="hprn-calc-label">
+                                <span>Monthly Design Retainer (Hours)</span>
+                                <span class="hprn-calc-price">R 1,200.00 /hour/mo</span>
+                            </label>
+                            <input type="number" name="design-opex-hours" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="160" value="0" step="5">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="design-video-production" class="hprn-calc-label">
+                                <span>Video Production Projects</span>
+                                <span class="hprn-calc-price">R 15,000.00 /video</span>
+                            </label>
+                            <input type="number" name="design-video-production" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="12" value="0" step="1">
+                        </div>
+                    </div>
+
+                    <div class="config-group-title">Hardware & Equipment</div>
+
+                    <div class="hprn-service-block" id="config-hardware" style="display:none;">
+                        <h3>Hardware Procurement <span class="hprn-capex-opex-badge hprn-capex-badge">CapEx</span></h3>
+                        <p class="hprn-card-description">Enterprise hardware, workstations, servers, and networking equipment.</p>
+                        <div class="hprn-calc-input-group">
+                            <label for="hardware-workstations" class="hprn-calc-label">
+                                <span>Workstations/Laptops</span>
+                                <span class="hprn-calc-price">R 30,000.00 /unit</span>
+                            </label>
+                            <input type="number" name="hardware-workstations" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="100" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="hardware-servers" class="hprn-calc-label">
+                                <span>Enterprise Servers</span>
+                                <span class="hprn-calc-price">R 75,000.00 /unit</span>
+                            </label>
+                            <input type="number" name="hardware-servers" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="20" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="hardware-networking" class="hprn-calc-label">
+                                <span>Networking Equipment (Switches, Routers)</span>
+                                <span class="hprn-calc-price">R 18,000.00 /unit</span>
+                            </label>
+                            <input type="number" name="hardware-networking" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="30" value="0" step="1">
+                        </div>
+                        <div class="hprn-calc-input-group">
+                            <label for="hardware-pos-systems" class="hprn-calc-label">
+                                <span>POS & Retail Systems</span>
+                                <span class="hprn-calc-price">R 12,000.00 /unit</span>
+                            </label>
+                            <input type="number" name="hardware-pos-systems" class="hprn-calc-input hprn-calc-input-trigger" min="0" max="50" value="0" step="1">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="hprn-pricing-footer">
+        <div class="hprn-pricing-container">
+            <h4>Disclaimer</h4>
+            <p>This calculator provides estimates for enterprise services. All costs are illustrative and should be confirmed with a formal quotation. The 10% annual commitment discount is applied to OpEx services before VAT.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+   
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
