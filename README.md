@@ -8,7 +8,7 @@
 
 ## Live Deployment
 
-[View Live Demo](https://thisislefa.github.io/Apex-Console)  
+[View Live Demo](https://lefajmofokeng.github.io/Apex-Console)  
 
 ---
 
@@ -329,4 +329,5 @@ Built for serious financial planning by serious organizations.
 ---
 
 **Apex** — Where enterprise budgeting meets intuitive configuration. No spreadsheets required.
+
 
